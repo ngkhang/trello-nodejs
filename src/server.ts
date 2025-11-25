@@ -1,14 +1,14 @@
 import http from 'http';
 
 import app from '@/app';
+import envConfig from '@/config/env.config';
 
-const PORT = process.env.port ? Number(process.env.port) : 8017;
-const HOST_NAME = process.env.hostname || 'localhost';
+const { APP_HOST, APP_PORT } = envConfig;
 
 const server = http.createServer(app);
 
-server.listen(PORT, HOST_NAME, () => {
-  console.info(`Server is running on http://${HOST_NAME}:${PORT}`);
+server.listen(APP_PORT, APP_HOST, () => {
+  console.info(`Server is running on http://${APP_HOST}:${APP_PORT}`);
 });
 
 process.on('SIGINT', () => {
