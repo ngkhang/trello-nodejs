@@ -7,6 +7,8 @@ const envValidation = Joi.object<ProcessEnv>({
   NODE_ENV: Joi.valid(...Object.values(nodeEnv)),
   APP_HOST: Joi.string().hostname().required(),
   APP_PORT: Joi.number().port().required(),
+  DB_MONGO_NAME: Joi.string().required(),
+  DB_MONGO_URI: Joi.string().uri().required(),
 })
   .unknown(true)
   .prefs({ errors: { label: 'key' } });

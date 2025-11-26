@@ -6,4 +6,6 @@ export interface ProcessEnv {
   NODE_ENV: NodeEnv;
   APP_HOST: string;
   APP_PORT: number;
+  DB_MONGO_NAME: string;
+  DB_MONGO_URI: string;
 }
