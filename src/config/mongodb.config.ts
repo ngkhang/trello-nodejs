@@ -28,3 +28,13 @@ export const getDb = (): Db => {
   if (!mongoDBInstance) throw new Error('Please connect to database first');
   return mongoDBInstance;
 };
+
+export const closeDb = async (): Promise<void> => {
+  try {
+    await mongoClientInstance.close();
+    console.info('Closed to MongoDB Cloud Atlas');
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(message);
+  }
+};
